@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>narayana Medicare</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* BODY */
+
+body{
+font-family:Verdana, sans-serif;
+background:linear-gradient(135deg,#f0f4ff,#e8fbf8,#fdf7ff);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+color:#333;
+min-height:100vh;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* PAGE SYSTEM */
+
+.page{
+display:none;
+animation:fade 0.5s ease-in-out;
+transition:all 0.4s ease;
+}
+
+.active{
+display:block;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* NAVBAR */
+
+.navbar{
+position:sticky;
+top:0;
+z-index:1000;
+background:linear-gradient(90deg,#ea35e4,#0a32e8) !important;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* MOON LOGO GLOW */
+
+.navbar-brand{
+font-weight:bold;
+letter-spacing:1px;
+text-shadow:0 0 8px rgba(255,255,255,0.6);
+animation:moonGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes yada {
+from{ text-shadow:0 0 5px rgba(255,255,255,0.5); }
+to{ text-shadow:0 0 15px rgba(255,255,255,0.9); }
+}
+
+.navbar .btn{
+border:none;
+background:white;
+color:#444;
+font-weight:600;
+border-radius:20px;
+padding:6px 14px;
+transition:0.25s;
+}
+
+.navbar .btn:hover{
+background:#f3f6ff;
+transform:scale(1.05);
+box-shadow:0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* CARDS */
+
+.card{
+border-radius:20px;
+border:none;
+background:rgba(255,255,255,0.9);
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+transition:all 0.3s ease;
+animation:floatCard 4s ease-in-out infinite;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+@keyframes floatCard{
+0%{transform:translateY(0);}
+50%{transform:translateY(-5px);}
+100%{transform:translateY(0);}
+}
+
+/* TABLE */
+
+table{
+background:rgba(255,255,255,0.95);
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* HEADINGS */
+
+h1,h2,h4{
+font-weight:700;
+letter-spacing:0.5px;
+}
+
+/* BUTTONS */
+
+.btn-primary{
+background:linear-gradient(90deg,#2f15d3,#20b2aa);
+border:none;
+border-radius:20px;
+padding:8px 18px;
+transition:0.25s;
+}
+
+.btn-primary:hover{
+transform:scale(1.05);
+box-shadow:0 5px 12px rgba(0,0,0,0.2);
+}
+
+/* FORM STYLE */
+
+input,select{
+border-radius:12px !important;
+border:1px solid #ddd !important;
+padding:8px;
+transition:0.2s;
+}
+
+input:focus,select:focus{
+border-color:#6a5acd !important;
+box-shadow:0 0 8px rgba(106,90,205,0.3);
+}
+
+/* DARK MODE */
+
+.dark-mode{
+background:linear-gradient(135deg,#0f172a,#1e293b,#020617);
+color:white;
+}
+
+.dark-mode .card{
+background:rgba(30,41,59,0.9);
+color:white;
+}
+
+.dark-mode table{
+background:#1e293b;
+color:white;
+}
+
+.dark-mode .navbar{
+background:linear-gradient(90deg,#0f172a,#334155) !important;
+}
+
+.dark-mode .navbar .btn{
+background:#1e293b;
+color:white;
+}
+
+.dark-mode .navbar .btn:hover{
+background:#334155;
+}
+
+/* IMAGE */
+
+img{
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+img:hover{
+transform:scale(1.02);
+transition:0.4s;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+background:linear-gradient(90deg,#5f6dfb,#5ed6c2);
+color:white;
+font-weight:500;
+letter-spacing:1px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+
+<a class="navbar-brand text-white">Omkar Medicare</a>
+
+<div>
+<button class="btn me-2" onclick="openPage('home')">Home</button>
+<button class="btn me-2" onclick="openPage('services')">Facilities</button>
+<button class="btn me-2" onclick="openPage('departments')">Departments</button>
+<button class="btn me-2" onclick="openPage('doctors')">Specialists</button>
+<button class="btn me-2" onclick="openPage('appointment')">Appointment</button>
+<button class="btn me-2" onclick="openPage('contact')">Contact</button>
+
+<button class="btn btn-dark" onclick="toggleDark()">Dark Mode</button>
+</div>
+
+</div>
+</nav>
+
+
+<!-- HOME -->
+
+<div id="home" class="page active">
+
+<div class="container text-center mt-5">
+
+<h1>Welcome to Yada.a Hospitals</h1>
+
+<p>Delivering the best health with advanced care and medical technology.</p>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx3h-ePG7JL9XQMRyxctYPs2VWt7BP-gXXsQ&s"
+class="img-fluid rounded mt-3"
+style="width:100%; height:80vh; object-fit:cover;">
+
+</div>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<div id="services" class="page">
+
+<h2 class="text-center mt-4">Our Key Facilities</h2>
+
+<div class="container mt-4">
+
+<div class="row text-center">
+
+<div class="col-md-3">
+<div class="card p-3">
+<h4>🧬 Diagnostics Lab</h4>
+<p>High precision medical testing services.</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-3">
+<h4>🚑 Emergency Care</h4>
+<p>24 hours emergency treatment available.</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-3">
+<h4>💊 Pharmacy</h4>
+<p>Medicines available inside hospital.</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-3">
+<h4>🏥 Imaging</h4>
+<p>Modern CT scan and MRI facilities.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DEPARTMENTS -->
+
+<div id="departments" class="page">
+
+<div class="container mt-4">
+
+<h2 class="text-center">Hospital Departments</h2>
+
+<table class="table table-bordered table-striped mt-4">
+
+<thead class="table-dark">
+<tr>
+<th>Department</th>
+<th>Specialization</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Cardiology</td>
+<td>Heart treatments</td>
+</tr>
+
+<tr>
+<td>Neurology</td>
+<td>Brain and nerve care</td>
+</tr>
+
+<tr>
+<td>Orthopedics</td>
+<td>Bone and joint treatment</td>
+</tr>
+
+<tr>
+<td>Pediatrics</td>
+<td>Child healthcare</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- DOCTORS -->
+
+<div id="doctors" class="page">
+
+<div class="container text-center mt-4">
+
+<h2>Our Specialists</h2>
+
+<div class="row mt-4">
+
+<div class="col-md-4">
+<div class="card p-3">
+<h4>Dr. Dhanush</h4>
+<p>Cardiologist</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+<h4>Dr. Hemesh</h4>
+<p>Neurologist</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+<h4>Dr. Ritish</h4>
+<p>Orthopedic Surgeon</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- APPOINTMENT -->
+
+<div id="appointment" class="page">
+
+<div class="container mt-4">
+
+<h2 class="text-center">Book Appointment</h2>
+
+<form class="mt-4">
+
+<div class="mb-3">
+<label>Name</label>
+<input type="text" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Email</label>
+<input type="email" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Select Department</label>
+<select class="form-control">
+<option>Cardiology</option>
+<option>Neurology</option>
+<option>Orthopedics</option>
+<option>Pediatrics</option>
+</select>
+</div>
+
+<button class="btn btn-primary">Submit</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div id="contact" class="page">
+
+<div class="container text-center mt-4">
+
+<h2>Contact Us</h2>
+
+<p>📍 Hyderabad, India</p>
+<p>📞 +91 8555814822</p>
+<p>📧 Yada.a@gmail.com</p>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="text-center p-3">
+©️ 2026 Yada  Hospitals
+</footer>
+
+
+<script>
+
+function openPage(page){
+
+let pages=document.querySelectorAll(".page");
+
+pages.forEach(p=>p.classList.remove("active"));
+
+document.getElementById(page).classList.add("active");
+
+}
+
+function toggleDark(){
+document.body.classList.toggle("dark-mode");
+}
+
+</script>
+
+</body>
+</html>
